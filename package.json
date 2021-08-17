@@ -1,0 +1,36 @@
+{
+  "name": "jest-tdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "jest": "^27.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "collectCoverage": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandon-stewart-rgb/jest-tdd.git"
+  },
+  "keywords": [
+    "node",
+    "jest",
+    "javascript",
+    "tdd"
+  ],
+  "author": "Brandon Stewart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandon-stewart-rgb/jest-tdd/issues"
+  },
+  "homepage": "https://github.com/brandon-stewart-rgb/jest-tdd#readme"
+}
