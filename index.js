@@ -21,11 +21,10 @@ const questions = [
         message: "What is team member's name?",
 
     },
-    {
-        type: 'input',
+    { 
+        type: 'number',
         name: 'id',
-        message: "What is team member's id?",
-
+        message: "What is team member's id?", 
     },
     {
         type: 'input',
@@ -66,14 +65,16 @@ const questions = [
            if(answers.role === 'Manager')
            return true;
           },
-
     type: 'input',
     message: "Manager: What is team member's office number?",
     name: 'officeNumber',
-    
     },
-
-
+    {  
+    message:'Would you like to add another team member?',
+    name: 'newEmployee',
+    type: "list",
+    choices: ["Yes", "No"],
+    },
 
 ];
 
@@ -82,8 +83,53 @@ const questions = [
 
 
 
-const team = [];
-inquirer.prompt(questions).then((answers) => {
-    console.log(JSON.stringify(answers, null, '  '));
-  });
+const theTeam = [];
+const init = function(){
+inquirer.prompt(questions)
+.then((res) => {
 
+    if(res.role === 'Engineer') {
+        const engineer = new Engineer(res.name, res.id, res.email, res.github);
+        theTeam.push(engineer);
+        console.log(engineer);
+    }
+
+    if(res.role === 'Intern') {
+        const intern = new Intern(res.name, res.id, res.email, res.school);
+        theTeam.push(intern);
+        console.log(intern)
+    }
+
+    if(res.role === 'Manager') {
+        const manager = new Manager(res.name, res.id, res.email, res.officeNumber);
+        theTeam.push(manager);
+        console.log(manager)
+    }
+    
+    if(res.newEmployee === 'Yes') {
+       return inquirer.prompt(questions);  
+    } else {
+        return;
+    }
+     
+    
+          
+        
+    
+      
+    // console.log(JSON.stringify(answers, null, '  '));
+  });
+  console.log('The team page has been produced!')
+};
+init();
+
+
+
+
+
+
+//  function produceManager(answers) {
+//     const manager = new Manager('name', 'id', 'email', 'officeNumber');
+//     // return theTeam.push(manager);
+//     console.log(manager)
+//  }
