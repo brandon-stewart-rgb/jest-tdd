@@ -1,18 +1,17 @@
-
-var jest = require('jest');
 var inquirer = require('inquirer');
 const fs = require('fs')
+const path = require("path");
 // const Employee = require('../lib/Employee.js');
-const Engineer = require('./lib/Engineer.js');
-const Intern = require('./lib/Intern.js');
-const Manager = require('./lib/Manager.js');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+// const generateData = require('./lib/data-renderer')
+const { writeFile } = require('./lib/generate-site');
+const generateData = require('./lib/data-renderer');
 // const generatePage = require('./src/page-template');
 
 
-//  CLASSES AND PROTOTYPES
-// https://gist.github.com/prof3ssorSt3v3/c056b8b5f379ee2767bb4e8ad90f3dac
-
-// common questions
+// questions
 const questions = [
 
     {
@@ -72,19 +71,25 @@ const questions = [
     {  
     message:'Would you like to add another team member?',
     name: 'newEmployee',
-    type: "list",
-    choices: ["Yes", "No"],
+    type: "confirm",
     },
 
 ];
 
-/// when: answers 
-// https://github.com/SBoudrias/Inquirer.js/blob/master/packages/inquirer/examples/when.js#L18
+
+// function to write README file
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err => {
+        if (err) {
+            return console.log(err);
+        }
+        console.log('Your new README.md file has been created!')
+    });
+  };
 
 
-
-const theTeam = [];
-const init = function(){
+var theTeam = [];
+const init = () => {
 inquirer.prompt(questions)
 .then((res) => {
 
@@ -106,30 +111,42 @@ inquirer.prompt(questions)
         console.log(manager)
     }
     
-    if(res.newEmployee === 'Yes') {
-       return inquirer.prompt(questions);  
+    
+    if(res.newEmployee) {
+       init();
     } else {
-        return;
-    }
-     
-    
-          
+
+       console.log('things happening')
         
+      }
+
+    //   generateData(theTeam);
+
     
-      
-    // console.log(JSON.stringify(answers, null, '  '));
-  });
-  console.log('The team page has been produced!')
+
+    //   fs.writeFile('./dist/data-string.js', JSON.stringify(theTeam), err => {
+    //     if (err) {
+    //         return console.log(err);
+    //     }
+    //     console.log('Your new data file has been created!')
+    //   });
+    
+    const syntax = generateData(userResponses, userInfo);
+    console.log(syntax);
+
+
+
+
+
+    });
+   
+
 };
+
+    
+   
+
+
 init();
 
-
-
-
-
-
-//  function produceManager(answers) {
-//     const manager = new Manager('name', 'id', 'email', 'officeNumber');
-//     // return theTeam.push(manager);
-//     console.log(manager)
-//  }
+// console.log(JSON.stringify(answers, null, '  '));

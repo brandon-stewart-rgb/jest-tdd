@@ -41,7 +41,11 @@
             <h1 class="title" style="color: ghostwhite;">Developer TEAM</h1><br>
           </div>
         </div>
+
+        
         <div id="app" class="row columns is-multiline">
+
+          <!-- begin card -->
           <div v-for="card in cardData" key="card.id" class="column is-4">
             <div class="card large">
               <div class="card-image">
@@ -71,6 +75,8 @@
               </div>
             </div>
           </div>
+
+          
         </div>
       </div>
     </div>
@@ -94,7 +100,7 @@
     <script src="cardsData.js"></script>
 
     <!-- Using Vue to populate cards to reduce redundant code -->
-    <script>
+    <!-- <script>
       var app = new Vue({
         el: '#app',
         data: {
@@ -102,7 +108,7 @@
         }
       })
 
-    </script>
+    </script> -->
   </body>
 
 </html>
