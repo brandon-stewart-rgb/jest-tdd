@@ -1,17 +1,13 @@
-var inquirer = require('inquirer');
-const fs = require('fs')
-const path = require("path");
-// const Employee = require('../lib/Employee.js');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
-const Manager = require('./lib/Manager');
-// const generateData = require('./lib/data-renderer')
-const { writeFile } = require('./lib/generate-site');
-const generateData = require('./lib/data-renderer');
-// const generatePage = require('./src/page-template');
+const inquirer = require('inquirer');
+const  Engineer  = require('./lib/Engineer');
+const  Intern  = require('./lib/Intern');
+const  Manager = require('./lib/Manager');
+const fs = require('fs');
+const generateCards = require('./src/page-template');
 
+// empty array
+var team = [];
 
-// questions
 const questions = [
 
     {
@@ -23,18 +19,17 @@ const questions = [
     { 
         type: 'number',
         name: 'id',
-        message: "What is team member's id?", 
+        message: "\nWhat is team member's id?", 
     },
     {
         type: 'input',
         name: 'email',
-        message: "What is team member's email?",
-
+        message: "\nWhat is team member's email?",
     },
     {
         type: 'list',
         name: 'role',
-        message: "What is team member's role?",
+        message: "\nWhat is team member's role?",
         choices: ['Engineer', 'Intern', 'Manager' ]
     },
     {  
@@ -44,7 +39,7 @@ const questions = [
           },
 
     type: 'input',
-    message: "Engineer: What is team member's Github username?",
+    message: "\nEngineer: What is team member's Github username?",
     name: 'github',
     
     },
@@ -55,7 +50,7 @@ const questions = [
           },
 
     type: 'input',
-    message: "Intern: Where did team member go to school?",
+    message: "\nIntern: Where did team member go to school?",
     name: 'school',
     
     },
@@ -65,88 +60,52 @@ const questions = [
            return true;
           },
     type: 'input',
-    message: "Manager: What is team member's office number?",
+    message: "\nManager: What is team member's office number?",
     name: 'officeNumber',
     },
     {  
-    message:'Would you like to add another team member?',
+    message:'\nWould you like to add another team member?',
     name: 'newEmployee',
     type: "confirm",
+    default: false,
     },
 
 ];
 
 
-// function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, err => {
-        if (err) {
-            return console.log(err);
-        }
-        console.log('Your new README.md file has been created!')
-    });
-  };
-
-
-var theTeam = [];
 const init = () => {
 inquirer.prompt(questions)
 .then((res) => {
 
-    if(res.role === 'Engineer') {
-        const engineer = new Engineer(res.name, res.id, res.email, res.github);
-        theTeam.push(engineer);
-        console.log(engineer);
-    }
+        if (res.role === "Manager") {
+            const manager = new Manager(res.name, res.id, res.email, res.officeNumber);
+            team.push(manager);
+        }
 
-    if(res.role === 'Intern') {
-        const intern = new Intern(res.name, res.id, res.email, res.school);
-        theTeam.push(intern);
-        console.log(intern)
-    }
+        if (res.role === "Engineer") {
+            const engineer = new Engineer(res.name, res.id, res.email, res.github);
+            team.push(engineer);
+        }
 
-    if(res.role === 'Manager') {
-        const manager = new Manager(res.name, res.id, res.email, res.officeNumber);
-        theTeam.push(manager);
-        console.log(manager)
-    }
-    
-    
-    if(res.newEmployee) {
-       init();
-    } else {
-
-       console.log('things happening')
+        if (res.role === "Intern") {
+            const intern = new Intern(res.name, res.id, res.email, res.school);
+            team.push(intern);
+        }
         
-      }
-
-    //   generateData(theTeam);
-
+        if (res.newEmployee) {
+            init();
+        } else {
+            
+        }
     
+        let pageHTML = generateCards(team);
 
-    //   fs.writeFile('./dist/data-string.js', JSON.stringify(theTeam), err => {
-    //     if (err) {
-    //         return console.log(err);
-    //     }
-    //     console.log('Your new data file has been created!')
-    //   });
-    
-    const syntax = generateData(userResponses, userInfo);
-    console.log(syntax);
-
-
-
-
-
-    });
-   
-
-};
-
-    
-   
-
+        fs.writeFileSync('./dist/index.html', pageHTML, err => {
+            if(err) throw new Error(err);
+        });  
+       
+    });  
+       
+ };
 
 init();
-
-// console.log(JSON.stringify(answers, null, '  '));
