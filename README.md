@@ -8,7 +8,7 @@ A team HTML generator using inquirer and node.js.
 
 ![License Badge](https://img.shields.io/static/v1?label=license&message=MIT+License&color=brightgreen&style=for-the-badge)
 <br />
-![Demo Video](https://drive.google.com/file/d/1xMfjE-vorHIG4GmBrNFiXMYYeoZjpPdb/view)
+[Demo Video](https://drive.google.com/file/d/1xMfjE-vorHIG4GmBrNFiXMYYeoZjpPdb/view)
 <br />
 
 
