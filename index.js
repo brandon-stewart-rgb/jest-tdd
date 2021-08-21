@@ -9,7 +9,6 @@ const generateCards = require('./src/page-template');
 var team = [];
 
 const questions = [
-
     {
         type: 'input',
         name: 'name',
@@ -19,17 +18,17 @@ const questions = [
     { 
         type: 'number',
         name: 'id',
-        message: "\nWhat is team member's id?", 
+        message: "What is team member's id?", 
     },
     {
         type: 'input',
         name: 'email',
-        message: "\nWhat is team member's email?",
+        message: "What is team member's email?",
     },
     {
         type: 'list',
         name: 'role',
-        message: "\nWhat is team member's role?",
+        message: "What is team member's role?",
         choices: ['Engineer', 'Intern', 'Manager' ]
     },
     {  
@@ -39,9 +38,8 @@ const questions = [
           },
 
     type: 'input',
-    message: "\nEngineer: What is team member's Github username?",
-    name: 'github',
-    
+    message: "Engineer: What is team member's Github username?",
+    name: 'github',  
     },
     {  
         when: function( answers ) {
@@ -50,7 +48,7 @@ const questions = [
           },
 
     type: 'input',
-    message: "\nIntern: Where did team member go to school?",
+    message: "Intern: Where did team member go to school?",
     name: 'school',
     
     },
@@ -60,18 +58,17 @@ const questions = [
            return true;
           },
     type: 'input',
-    message: "\nManager: What is team member's office number?",
+    message: "Manager: What is team member's office number?",
     name: 'officeNumber',
     },
     {  
-    message:'\nWould you like to add another team member?',
+    message:'Would you like to add another team member?',
     name: 'newEmployee',
     type: "confirm",
     default: false,
     },
 
 ];
-
 
 const init = () => {
 inquirer.prompt(questions)
@@ -94,18 +91,13 @@ inquirer.prompt(questions)
         
         if (res.newEmployee) {
             init();
-        } else {
-            
+        } else {   
         }
     
         let pageHTML = generateCards(team);
-
         fs.writeFileSync('./dist/index.html', pageHTML, err => {
             if(err) throw new Error(err);
-        });  
-       
-    });  
-       
+        });        
+    });       
  };
-
 init();

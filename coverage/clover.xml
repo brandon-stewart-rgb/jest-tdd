@@ -1,37 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1629158324195" clover="3.2.0">
-  <project timestamp="1629158324195" name="All files">
-    <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4" elements="23" coveredelements="23" complexity="0" loc="19" ncloc="19" packages="1" files="4" classes="4"/>
+<coverage generated="1629565830174" clover="3.2.0">
+  <project timestamp="1629565830174" name="All files">
+    <metrics statements="29" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="14" coveredmethods="4" elements="43" coveredelements="23" complexity="0" loc="29" ncloc="29" packages="1" files="4" classes="4"/>
     <file name="Employee.js" path="C:\Users\brand\Desktop\projects\jest-tdd\lib\Employee.js">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="8" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
       <line num="3" count="4" type="stmt"/>
       <line num="4" count="4" type="stmt"/>
       <line num="5" count="4" type="stmt"/>
-      <line num="26" count="4" type="stmt"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="13" count="0" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
+      <line num="21" count="0" type="stmt"/>
+      <line num="27" count="4" type="stmt"/>
     </file>
     <file name="Engineer.js" path="C:\Users\brand\Desktop\projects\jest-tdd\lib\Engineer.js">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
-      <line num="2" count="1" type="stmt"/>
-      <line num="6" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
       <line num="7" count="1" type="stmt"/>
-      <line num="16" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="12" count="0" type="stmt"/>
+      <line num="16" count="0" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
     </file>
     <file name="Intern.js" path="C:\Users\brand\Desktop\projects\jest-tdd\lib\Intern.js">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
       <line num="6" count="1" type="stmt"/>
-      <line num="15" count="1" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="15" count="0" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
     </file>
     <file name="Manager.js" path="C:\Users\brand\Desktop\projects\jest-tdd\lib\Manager.js">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="6" count="1" type="stmt"/>
       <line num="7" count="1" type="stmt"/>
-      <line num="16" count="1" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="14" count="0" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
